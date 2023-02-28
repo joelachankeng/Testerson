@@ -83,6 +83,7 @@ function devImages() {
 }
 
 function watchFiles() {
+  watch(`./**/*.{html,php}`, series(devStyles, previewReload));
   watch(
     `${options.paths.src.base}/**/*.{html,php}`,
     series(devStyles, previewReload)
