@@ -85,7 +85,7 @@ function devImages() {
 function watchFiles() {
   watch(
     `${options.paths.src.base}/**/*.{html,php}`,
-    series(devHTML, devStyles, previewReload)
+    series(devStyles, previewReload)
   );
   watch(
     [options.config.tailwindjs, `${options.paths.src.css}/**/*.scss`],

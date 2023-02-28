@@ -12,7 +12,7 @@ module.exports = {
   paths: {
     root: "./",
     src: {
-      base: "./src",
+      base: ".",
       css: "./src/css",
       js: "./src/js",
       img: "./src/img",
