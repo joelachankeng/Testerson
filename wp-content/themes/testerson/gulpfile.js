@@ -29,10 +29,10 @@ const includePartials = require("gulp-file-include"); //For supporting partials 
 //Load Previews on Browser on dev
 function livePreview(done) {
   browserSync.init({
-    server: {
-      // baseDir: options.paths.dist.base,
-      proxy: "testerson.test",
-    },
+    proxy: "http://testerson.test/",
+    // server: {
+    //   baseDir: options.paths.dist.base,
+    // },
     port: options.config.port || 5000,
   });
   done();
