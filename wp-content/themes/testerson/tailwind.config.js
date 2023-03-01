@@ -18,15 +18,43 @@ const plugins = Object.keys(allPlugins)
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{html,js,php}"],
+  content: [
+    "./src/**/*.{html,js,php}",
+    "./template-parts/**/*.{html,js,php}",
+    "./*.php",
+  ],
   theme: {
     extend: {
-      fontFamily: {},
+      fontSize: {
+        sm: [
+          "0.875rem",
+          {
+            lineHeight: "1.063rem",
+            letterSpacing: "0.01em",
+            fontWeight: "400",
+          },
+        ],
+        "sm-x": [
+          "0.938rem",
+          {
+            lineHeight: "1.125rem",
+            letterSpacing: "0.05em",
+          },
+        ],
+      },
+      fontFamily: {
+        sans: ["Montserrat", "sans-serif"],
+      },
       colors: {
         brand: {
-          primary: "#FFF",
-          secondary: "#FFF",
-          tertiary: "#FFF",
+          medBlue: "#0072BB",
+          grey: "#555555",
+          brightSalmon: "#FB4E64",
+          darkGrey: "#53524D",
+          brightCyan: "#00B2FF",
+        },
+        bg: {
+          darkGrey: "#272725",
         },
       },
     },
