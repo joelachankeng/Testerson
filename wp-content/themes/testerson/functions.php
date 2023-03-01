@@ -43,7 +43,9 @@ if (!function_exists('testersontheme_setup')) :
 
         // This theme uses wp_nav_menu() in one location.
         register_nav_menus(array(
-            'menu-1' => esc_html__('Primary', 'TestersonTheme'),
+            'menu-top' => esc_html__('Top Menu', 'TestersonTheme'),
+            'menu-main' => esc_html__('Main Menu', 'TestersonTheme'),
+            'footer-main' => esc_html__('Footer Menu', 'TestersonTheme'),
         ));
 
         /*
@@ -73,6 +75,7 @@ if (!function_exists('testersontheme_setup')) :
             'flex-height' => true,
         ));
 
+
         // Adding support for core block visual styles.
         add_theme_support('wp-block-styles');
 
@@ -99,11 +102,10 @@ function testersontheme_scripts()
         wp_enqueue_style('testersontheme-style-dist', get_template_directory_uri() . '/dist/css/style.css');
     }
 
-    if (file_exists(get_template_directory() . '/build/js/script.js')) {
-
-        wp_enqueue_script('testersontheme-js-main', get_template_directory_uri() . '/build/js/script.js', array(), false, true);
+    if (file_exists(get_template_directory() . '/build/js/scripts.js')) {
+        wp_enqueue_script('testersontheme-js-main', get_template_directory_uri() . '/build/js/scripts.js', array('jquery'), false, true);
     } else {
-        wp_enqueue_script('testersontheme-js-main', get_template_directory_uri() . '/dist/js/script.js', array(), false, true);
+        wp_enqueue_script('testersontheme-js-main', get_template_directory_uri() . '/dist/js/scripts.js', array('jquery'), false, true);
     }
 
     if (is_singular() && comments_open() && get_option('thread_comments')) {
