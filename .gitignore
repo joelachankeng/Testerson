@@ -10,6 +10,7 @@ wp-content/*
 !wp-content/themes/
 
 # ignore these plugins
+wp-content/plugins/
 wp-content/plugins/hello.php
 
 # ignore specific themes
