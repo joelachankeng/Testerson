@@ -113,3 +113,147 @@ function testersontheme_scripts()
     }
 }
 add_action('wp_enqueue_scripts', 'testersontheme_scripts');
+
+/**
+ * Widgets Registration
+ */
+function testersontheme_widgets_init()
+{
+    if (function_exists('register_sidebar')) {
+        $footerColumn1 = array(
+            'name'          => 'Footer Column 1',
+            'id'            => 'footer-column-1',
+            'before_widget' => '<div class="footer-column-1">',
+            'after_widget'  => '</div>',
+            'before_title'  => '<h3 class="footer-column-title">',
+            'after_title'   => '</h3>',
+        );
+        $footerColumn2 = array(
+            'name'          => 'Footer Column 2',
+            'id'            => 'footer-column-2',
+            'before_widget' => '<div class="footer-column-2">',
+            'after_widget'  => '</div>',
+            'before_title'  => '<h3 class="footer-column-title">',
+            'after_title'   => '</h3>',
+        );
+        $footerColumn3 = array(
+            'name'          => 'Footer Column 3',
+            'id'            => 'footer-column-3',
+            'before_widget' => '<div class="footer-column-3">',
+            'after_widget'  => '</div>',
+            'before_title'  => '<h3 class="footer-column-title">',
+            'after_title'   => '</h3>',
+        );
+        $footerColumn4 = array(
+            'name'          => 'Footer Column 4',
+            'id'            => 'footer-column-4',
+            'before_widget' => '<div class="footer-column-4">',
+            'after_widget'  => '</div>',
+            'before_title'  => '<h3 class="footer-column-title">',
+            'after_title'   => '</h3>',
+        );
+
+        $footerFootnote = array(
+            'name'          => 'Footer Footnote',
+            'id'            => 'footer-footnote',
+            'before_widget' => '<div class="footer-footnote">' . '©' . date("Y") . ' ',
+            'after_widget'  => '</div>',
+            'before_title'  => '<h3 class="footer-column-title">',
+            'after_title'   => '</h3>',
+        );
+
+        register_sidebar($footerColumn1);
+        register_sidebar($footerColumn2);
+        register_sidebar($footerColumn3);
+        register_sidebar($footerColumn4);
+        register_sidebar($footerFootnote);
+    }
+}
+
+
+add_action('widgets_init', 'testersontheme_widgets_init');
+
+
+/**
+ * Block Registration
+ */
+add_action('acf/init', 'my_acf_init');
+function my_acf_init()
+{
+
+
+    // check function exists
+    if (function_exists('acf_register_block')) {
+
+        // register the testerson category
+        function etesterson_block_category($categories, $post)
+        {
+            return array_merge(
+                array(
+                    array(
+                        'slug' => 'testerson',
+                        'title' => 'testerson',
+                    ),
+                ),
+                $categories,
+            );
+        }
+        add_filter('block_categories_all', 'etesterson_block_category', 10, 2);
+
+
+
+        // register a hero block
+        acf_register_block(array(
+            'name'                            => 'hero',
+            'title'                           => __('Hero'),
+            'description'                     => __('A hero block'),
+            "render_template"                 => "template-parts/blocks/hero/hero.php",
+            'category'                        => 'testerson',
+            'icon'                            => 'welcome-widgets-menus',
+            'keywords'                        => array('hero', 'testerson'),
+            'supports'                        => array('align' => 'full',),
+            'align'                           => 'full',
+            'enqueue_assets'                  => function () {
+                wp_enqueue_style('testersontheme-style-dist', 'http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css');
+                wp_enqueue_script('testersontheme-js-main', 'http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js', array('jquery'), false, true);
+            },
+        ));
+
+        // register a post slider block
+        acf_register_block(array(
+            'name'                            => 'posts-slider',
+            'title'                           => __('Posts Slider'),
+            'description'                     => __('A post slider'),
+            "render_template"                 => "template-parts/blocks/post-slider/post-slider.php",
+            'category'                        => 'testerson',
+            'icon'                            => 'slides',
+            'keywords'                        => array('posts', 'slider', 'testerson'),
+            'supports'                        => array('align' => 'full',),
+            'align'                           => 'full',
+            'enqueue_assets'                  => function () {
+                wp_enqueue_style('testersontheme-style-dist', 'http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css');
+                wp_enqueue_script('testersontheme-js-main', 'http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js', array('jquery'), false, true);
+            },
+        ));
+
+        // register a card grid block
+        acf_register_block(array(
+            'name'                            => 'cards-grid',
+            'title'                           => __('Cards Grid'),
+            'description'                     => __('A grid of Cards'),
+            "render_template"                 => "template-parts/blocks/cards/cards-grid.php",
+            'category'                        => 'testerson',
+            'icon'                            => 'slides',
+            'keywords'                        => array('cards', 'testerson'),
+            'supports'                        => array('align' => 'full',),
+            'align'                           => 'full',
+        ));
+    }
+}
+
+function getButtonClass($input)
+{
+    if (!$input || $input == "white") return "button";
+    if ($input == "red") return "button button-inverse";
+    if ($input == "blue-arrow") return "button button-arrow";
+}
