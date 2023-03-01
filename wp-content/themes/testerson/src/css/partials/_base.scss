@@ -1,0 +1,98 @@
+@media (min-width: 1536px) {
+  .container {
+    max-width: $screen-max;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Roboto:wght@300;400&display=swap");
+
+body {
+  color: $color-darkGrey;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.875rem;
+}
+
+.logo-container {
+  img {
+    margin-left: -60px;
+    @media (max-width: $screen-max) {
+      margin-left: 0;
+    }
+  }
+  @media (max-width: $screen-xs) {
+    width: 50px;
+    height: 50px;
+    .site-title {
+      p {
+        font-size: 2rem;
+      }
+    }
+  }
+}
+
+a.button {
+  background: #ffffff;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: $color-darkGrey;
+  padding: 18px 60px;
+
+  &:hover {
+    background: $color-brightCyan;
+    color: #fff;
+  }
+}
+
+.button.button-inverse {
+  background: $color-brightSalmon;
+  color: #fff;
+}
+
+a.button.button-arrow {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 1px solid $color-medBlue;
+  border-radius: 10px;
+  padding: 14px 60px;
+  color: $color-medBlue;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 17px;
+  transition: all 175ms;
+  &:after {
+    content: "";
+    @include svg-size(10px);
+    @include svg-background();
+    @include svg-arrow-right($color-medBlue);
+    position: absolute;
+    right: 0;
+    margin-right: 25px;
+  }
+  &:hover {
+    background: $color-brightCyan;
+    color: #fff;
+    border: transparent;
+    &:after {
+      margin-right: 20px;
+      @include svg-arrow-right(#fff);
+    }
+  }
+}
