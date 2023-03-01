@@ -1,0 +1,134 @@
+footer#footer {
+  position: relative;
+  margin-top: 260px;
+  .footer-bg {
+    position: absolute;
+    height: 1340px;
+    width: 100%;
+    background: url(/wp-content/themes/testerson/src/img/footer-bg.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right;
+    z-index: -1;
+    bottom: 0;
+  }
+  .footer-navigation {
+    margin-bottom: 115px;
+    > .container {
+      //   display: flex;
+      //   justify-content: space-between;
+      //   align-items: stretch;
+    }
+    .footer-row {
+      display: flex;
+      align-items: center;
+      @media (max-width: $screen-sm) {
+        flex-direction: column;
+      }
+      .footer-border {
+        opacity: 0.5;
+        border: 2px dashed #ffffff;
+      }
+      .footer-col {
+        width: 100%;
+      }
+    }
+    .address-container {
+      position: relative;
+      &:before {
+        content: "";
+        content: "";
+        position: absolute;
+        top: 0;
+        height: 100%;
+        border-left: 2px dashed #ffffff;
+        margin-left: -60px;
+        opacity: 0.5;
+      }
+      p {
+        font-family: $font-popins;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 31px;
+        color: #ffffff;
+      }
+      .address-phone {
+        font-family: $font-popins;
+
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 31px;
+      }
+      .address {
+        margin-top: 8px;
+      }
+      .address p {
+        font-family: $font-roboto;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 26px;
+        color: #ffffff;
+        a {
+          text-decoration: underline;
+        }
+      }
+    }
+    .slogan {
+      span {
+        position: absolute;
+        margin-top: -42px;
+        font-weight: 300;
+        font-size: 24px;
+        line-height: 43px;
+        @media (max-width: 768px) {
+          position: relative;
+        }
+      }
+      p {
+        font-weight: 400;
+        font-size: 53px;
+        line-height: 65px;
+        color: #ffffff;
+        border: 2px solid #fff;
+        padding: 0px 20px;
+      }
+    }
+
+    ul.menu {
+      a {
+        font-family: $font-popins;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 46px;
+        text-decoration-line: underline;
+        text-transform: capitalize;
+        color: #ffffff;
+        &:hover {
+          padding: 5px;
+          background: $color-brightCyan;
+        }
+      }
+    }
+  }
+  .footnote {
+    background: #002c55;
+    > .container {
+      font-family: $font-popins;
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 22px;
+      letter-spacing: 0.01em;
+      color: $color-brightCyan;
+      text-align: center;
+      padding: 32px 0;
+      a {
+        text-decoration: underline;
+        &:hover {
+          color: #fff;
+        }
+      }
+    }
+  }
+}
