@@ -1,0 +1,139 @@
+section.hero {
+  .hero-slider {
+    &.slick-slider {
+      display: flex;
+      justify-content: center;
+
+      align-items: center;
+    }
+    .slick-list {
+      width: 100%;
+    }
+    .slick-track {
+      width: 100%;
+      height: 1200px;
+    }
+    .slick-arrow {
+      position: absolute;
+      font-size: 0;
+      @include svg-background();
+      @include svg-round-arrow-left(#fff);
+      @include svg-size(58px);
+      min-width: 58px;
+      z-index: 1;
+      &.slick-prev {
+        left: 40px;
+      }
+      &.slick-next {
+        right: 40px;
+        transform: rotate(180deg);
+      }
+      &:hover {
+        @include svg-round-arrow-left($color-brightSalmon);
+      }
+    }
+    ul.slick-dots {
+      position: absolute;
+      bottom: 100px;
+      display: flex;
+      z-index: 1;
+      gap: 20px;
+      li {
+        font-size: 0;
+        border: 1px solid $color-brightSalmon;
+        border-radius: 100%;
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+        &:hover {
+          background: $color-brightSalmon;
+          border: 1px solid #fff;
+        }
+        &.slick-active {
+          background: $color-brightSalmon;
+        }
+      }
+    }
+  }
+  .hero-overlay {
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.12));
+  }
+
+  .hero-slide {
+    position: relative;
+    height: 1200px;
+    width: 100%;
+  }
+  .hero-bg {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+  }
+  .hero-overlay {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.12));
+  }
+  .hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .hero-content {
+    height: 100%;
+    width: 100%;
+
+    //   padding-top: 200px;
+  }
+  .hero-content .container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  h1.hero-title {
+    font-weight: 200;
+    font-size: 68px;
+    line-height: 83px;
+    text-align: center;
+    text-transform: capitalize;
+    color: #ffffff;
+    background: linear-gradient(
+      92.68deg,
+      $color-brightSalmon -11.68%,
+      #0177c1 116.14%
+    );
+    padding: 5px 20px;
+  }
+  p.hero-subcopy {
+    margin-top: 25px;
+    color: #fff;
+    font-size: 24px;
+    text-align: center;
+    max-width: 800px;
+  }
+  .hero-cta {
+    margin-top: 25px;
+    gap: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .hero-bottom-slash {
+    position: absolute;
+    bottom: 0;
+    background: url(/wp-content/themes/testerson/src/img/hero-slash.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 150px;
+  }
+}
